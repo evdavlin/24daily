@@ -497,7 +497,7 @@ function HowToPlay({ onClose, onPlay }) {
         </div>
         <div className="modal-body">
           <p className="modal-intro">
-            Four cards are revealed one by one. Use all four numbers and arithmetic to make <strong>24</strong>. You have <strong>60 seconds</strong> — find as many solutions as you can.
+            Four cards are revealed one by one. Use all four numbers and arithmetic to make <strong>24</strong>. You have <strong>2 minutes</strong> — find as many solutions as you can.
           </p>
           <div className="how-steps">
             <div className="how-step">
@@ -632,7 +632,7 @@ export default function App() {
     setCards(drawn); setAllSols(sols); setAllCanons(canons);
     setFlipped([false,false,false,false]);
     setTokens([]); setUsedIdx(new Set()); setSols([]); setFirst(null);
-    setTime(60); setFB({msg:"",ok:false}); setCopied(false); setGaveUp(false);
+    setTime(120); setFB({msg:"",ok:false}); setCopied(false); setGaveUp(false);
     setPct({speedPct:null,solutionsPct:null,totalPlayers:null,loading:false});
     solsRef.current=[]; firstRef.current=null; foundCanonsRef.current=new Set();
     setShowHow(false);
