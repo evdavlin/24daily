@@ -290,6 +290,12 @@ function pctLabel(p) {
   if (p>=90) return "Top 10%";
   if (p>=75) return "Top 25%";
   if (p>=50) return "Top 50%";
+  const s = p % 100;
+  if (s >= 11 && s <= 13) return `${p}th percentile`;
+  const r = p % 10;
+  if (r === 1) return `${p}st percentile`;
+  if (r === 2) return `${p}nd percentile`;
+  if (r === 3) return `${p}rd percentile`;
   return `${p}th percentile`;
 }
 function pctColor(p) {
@@ -701,7 +707,7 @@ export default function App() {
     `🧮 Solutions: ${solutions.length} / ${allSols.length}`,
     pct.speedPct!=null ? `🏆 Speed: ${pctLabel(pct.speedPct)}` : null,
     pct.solutionsPct!=null ? `📊 Volume: ${pctLabel(pct.solutionsPct)}` : null,
-    ``,`24daily.app`,
+    ``,`https://24daily.vercel.app`,
   ].filter(l=>l!==null).join("\n");
 
   const copyShare = ()=>{
