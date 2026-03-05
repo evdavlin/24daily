@@ -385,19 +385,19 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--ink);over
 .card-front.red{color:var(--red)}.card-front.black{color:var(--ink)}
 .card-front.used{opacity:.28;cursor:default;background:var(--bg2)}
 .card-front:not(.used):active{transform:rotateY(180deg) scale(.94);border-color:var(--gold-br);box-shadow:0 0 0 3px var(--gold-bg),var(--shadow)}
-.card-tl{display:flex;flex-direction:column;align-items:flex-start;line-height:1.1;padding:4px 0 0 4px}
-.card-br{display:flex;flex-direction:column;align-items:flex-end;line-height:1.1;align-self:flex-end;padding:0 4px 4px 0}
+.card-tl{display:flex;flex-direction:column;align-items:flex-start;line-height:1;gap:1px;padding:4px 0 0 4px}
+.card-br{display:flex;flex-direction:column;align-items:flex-end;line-height:1;gap:1px;align-self:flex-end;padding:0 4px 4px 0}
 .cv{font-family:'Libre Baskerville',serif;font-size:clamp(22px,6.5vw,32px);font-weight:700;line-height:1}
-.cs{font-size:clamp(14px,4vw,20px);line-height:1;margin-top:-1px}
+.cs{font-size:clamp(14px,4vw,20px);line-height:1}
 .card-center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
 .suit-big{font-size:clamp(24px,8vw,36px);line-height:1}
 .card-num-badge{font-family:'DM Mono',monospace;font-size:clamp(9px,2.2vw,11px);font-weight:500;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1px 5px}
 .card-front.red .card-num-badge{color:var(--red)}.card-front.black .card-num-badge{color:var(--ink2)}
 
 /* SOLS STRIP */
-.sols-strip{padding:0 12px 2px;display:flex;gap:6px;overflow-x:auto;flex-shrink:0;scrollbar-width:none}
+.sols-strip{padding:2px 12px 0;display:flex;gap:5px;overflow-x:auto;flex-shrink:0;scrollbar-width:none;height:24px;align-items:center}
 .sols-strip::-webkit-scrollbar{display:none}
-.sol-pill{background:var(--green-bg);border:1.5px solid var(--green-br);border-radius:20px;padding:3px 10px;font-family:'DM Mono',monospace;font-size:9px;color:var(--green);white-space:nowrap;flex-shrink:0;animation:popIn .28s cubic-bezier(.34,1.56,.64,1) both}
+.sol-pill{background:var(--green-bg);border:1.5px solid var(--green-br);border-radius:20px;padding:2px 8px;font-family:'DM Mono',monospace;font-size:9px;color:var(--green);white-space:nowrap;flex-shrink:0;animation:popIn .28s cubic-bezier(.34,1.56,.64,1) both}
 @keyframes popIn{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
 
 /* EXPRESSION */
@@ -869,11 +869,9 @@ export default function App() {
         ))}
       </div>
 
-      {solutions.length>0&&(
-        <div className="sols-strip">
-          {solutions.map((_,i)=><div className="sol-pill" key={i}>✓ #{i+1}{i===0?" ⚡":""}</div>)}
-        </div>
-      )}
+      <div className="sols-strip">
+        {solutions.map((_,i)=><div className="sol-pill" key={i}>✓ #{i+1}{i===0?" ⚡":""}</div>)}
+      </div>
 
       <div className="expr-wrap">
         <div className="expr-box">
