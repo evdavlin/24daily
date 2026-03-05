@@ -374,7 +374,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--ink);over
 
 /* CARD GRID */
 .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:7px 12px;flex-shrink:0}
-.card-scene{perspective:900px;aspect-ratio:3/4}
+.card-scene{perspective:900px;aspect-ratio:1/1}
 .card-3d{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1)}
 .card-3d.flipped{transform:rotateY(180deg)}
 .card-back,.card-front{position:absolute;inset:0;border-radius:12px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
@@ -385,12 +385,12 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--ink);over
 .card-front.red{color:var(--red)}.card-front.black{color:var(--ink)}
 .card-front.used{opacity:.28;cursor:default;background:var(--bg2)}
 .card-front:not(.used):active{transform:rotateY(180deg) scale(.94);border-color:var(--gold-br);box-shadow:0 0 0 3px var(--gold-bg),var(--shadow)}
-.card-tl{display:flex;flex-direction:column;align-items:flex-start;line-height:1.1}
-.card-br{display:flex;flex-direction:column;align-items:flex-end;line-height:1.1;align-self:flex-end}
-.cv{font-family:'Libre Baskerville',serif;font-size:clamp(18px,5vw,26px);font-weight:700;line-height:1}
-.cs{font-size:clamp(12px,3.2vw,16px);line-height:1;margin-top:-1px}
+.card-tl{display:flex;flex-direction:column;align-items:flex-start;line-height:1.1;padding:4px 0 0 4px}
+.card-br{display:flex;flex-direction:column;align-items:flex-end;line-height:1.1;align-self:flex-end;padding:0 4px 4px 0}
+.cv{font-family:'Libre Baskerville',serif;font-size:clamp(22px,6.5vw,32px);font-weight:700;line-height:1}
+.cs{font-size:clamp(14px,4vw,20px);line-height:1;margin-top:-1px}
 .card-center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
-.suit-big{font-size:clamp(28px,9vw,40px);line-height:1}
+.suit-big{font-size:clamp(24px,8vw,36px);line-height:1}
 .card-num-badge{font-family:'DM Mono',monospace;font-size:clamp(9px,2.2vw,11px);font-weight:500;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1px 5px}
 .card-front.red .card-num-badge{color:var(--red)}.card-front.black .card-num-badge{color:var(--ink2)}
 
