@@ -385,8 +385,8 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--ink);over
 .card-front.red{color:var(--red)}.card-front.black{color:var(--ink)}
 .card-front.used{opacity:.28;cursor:default;background:var(--bg2)}
 .card-front:not(.used):active{transform:rotateY(180deg) scale(.94);border-color:var(--gold-br);box-shadow:0 0 0 3px var(--gold-bg),var(--shadow)}
-.card-tl{display:flex;flex-direction:column;align-items:center;line-height:1;gap:2px;padding:5px 0 0 5px}
-.card-br{display:flex;flex-direction:column;align-items:center;line-height:1;gap:2px;align-self:flex-end;padding:0 5px 5px 0}
+.card-tl{display:flex;flex-direction:column;align-items:flex-start;line-height:1;gap:2px;padding:5px 0 0 5px}
+.card-br{display:flex;flex-direction:column;align-items:flex-end;line-height:1;gap:2px;align-self:flex-end;padding:0 5px 5px 0}
 .cv{font-family:'Libre Baskerville',serif;font-size:clamp(22px,6.5vw,32px);font-weight:700;line-height:1}
 .cs{font-size:clamp(14px,4vw,20px);line-height:1}
 .card-center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
