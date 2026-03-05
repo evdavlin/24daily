@@ -367,7 +367,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--ink);over
 .hdr-logo{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:var(--gold)}
 .hdr-date{font-family:'DM Mono',monospace;font-size:10px;color:var(--ink3)}
 .hdr-right{display:flex;align-items:center;gap:8px}
-.hdr-how{background:none;border:1.5px solid var(--border2);border-radius:20px;padding:4px 11px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--ink2);cursor:pointer;touch-action:manipulation}
+.hdr-how{background:none;border:1.5px solid var(--border2);border-radius:20px;padding:4px 11px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--ink2);cursor:pointer;touch-action:manipulation}.hdr-giveup{background:none;border:none;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;color:var(--ink3);cursor:pointer;touch-action:manipulation;text-decoration:underline;text-underline-offset:2px;padding:4px 2px}
 .timer{font-family:'DM Mono',monospace;font-size:26px;font-weight:500;letter-spacing:-.5px;transition:color .4s;min-width:62px;text-align:right}
 .timer.ok{color:var(--green)}.timer.warn{color:var(--warn)}.timer.danger{color:var(--danger);animation:pulse .5s infinite}.timer.idle-t{color:var(--ink3);font-size:18px;letter-spacing:2px}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
@@ -385,8 +385,8 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--ink);over
 .card-front.red{color:var(--red)}.card-front.black{color:var(--ink)}
 .card-front.used{opacity:.28;cursor:default;background:var(--bg2)}
 .card-front:not(.used):active{transform:rotateY(180deg) scale(.94);border-color:var(--gold-br);box-shadow:0 0 0 3px var(--gold-bg),var(--shadow)}
-.card-tl{display:flex;flex-direction:column;align-items:flex-start;line-height:1;gap:1px;padding:4px 0 0 4px}
-.card-br{display:flex;flex-direction:column;align-items:flex-end;line-height:1;gap:1px;align-self:flex-end;padding:0 4px 4px 0}
+.card-tl{display:flex;flex-direction:column;align-items:center;line-height:1;gap:2px;padding:5px 0 0 5px}
+.card-br{display:flex;flex-direction:column;align-items:center;line-height:1;gap:2px;align-self:flex-end;padding:0 5px 5px 0}
 .cv{font-family:'Libre Baskerville',serif;font-size:clamp(22px,6.5vw,32px);font-weight:700;line-height:1}
 .cs{font-size:clamp(14px,4vw,20px);line-height:1}
 .card-center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
@@ -426,7 +426,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--ink);over
 .btn-solve:active{opacity:.9}
 .btn-giveup{background:transparent;border:none;color:var(--ink3);font-size:11px;letter-spacing:.5px;padding:3px 20px;border-radius:var(--r);text-decoration:underline;text-underline-offset:2px}
 .btn-giveup:active{color:var(--ink2)}
-.solve-row{display:flex;flex-direction:column;align-items:center;gap:4px}
+.solve-row{display:flex;flex-direction:column;align-items:center;gap:0}
 
 /* RESULTS */
 .results{display:flex;flex-direction:column;height:100dvh;overflow-y:auto;padding:22px 16px 48px;gap:12px;scrollbar-width:none;background:var(--bg)}
@@ -836,6 +836,7 @@ export default function App() {
           <div className="hdr-date">{dateStr}</div>
         </div>
         <div className="hdr-right">
+          {phase==="playing" && <button className="hdr-giveup" onClick={giveUp}>Give Up</button>}
           <button className="hdr-how" onClick={()=>setShowHow(true)}>?</button>
           <div className={`timer ${phase==="revealing"?"idle-t":timerClass}`}>
             {phase==="revealing"?"· · ·":fmt(timeLeft)}
@@ -896,7 +897,6 @@ export default function App() {
         </div>
         <div className="solve-row">
           <button className="btn btn-solve" onClick={submit}>SOLVE →</button>
-          <button className="btn btn-giveup" onClick={giveUp}>Give Up</button>
         </div>
       </div>
     </div></>
