@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import Head from "next/head";
 
 // ── Anonymous ID ───────────────────────────────────────────────
 function getOrCreateAnonId() {
@@ -391,8 +392,8 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--ink);over
 .card-front.red{color:var(--red)}.card-front.black{color:var(--ink)}
 .card-front.used{opacity:.28;cursor:default;background:var(--bg2)}
 .card-front:not(.used):active{transform:rotateY(180deg) scale(.94);border-color:var(--gold-br);box-shadow:0 0 0 3px var(--gold-bg),var(--shadow)}
-.card-tl{display:flex;flex-direction:column;align-items:flex-start;line-height:1;gap:2px;padding:5px 0 0 5px}
-.card-br{display:flex;flex-direction:column;align-items:flex-end;line-height:1;gap:2px;align-self:flex-end;padding:0 5px 5px 0}
+.card-tl{display:flex;flex-direction:column;align-items:center;line-height:1;gap:3px;padding:5px 0 0 5px}
+.card-br{display:flex;flex-direction:column;align-items:center;line-height:1;gap:3px;align-self:flex-end;padding:0 5px 5px 0}
 .cv{font-family:'Libre Baskerville',serif;font-size:clamp(22px,6.5vw,32px);font-weight:700;line-height:1}
 .cs{font-size:clamp(14px,4vw,20px);line-height:1}
 .card-center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
@@ -424,10 +425,10 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--ink);over
 .btn{border:none;border-radius:8px;cursor:pointer;font-family:'DM Mono',monospace;font-weight:500;transition:all .1s;display:flex;align-items:center;justify-content:center;touch-action:manipulation}
 .btn:active{transform:scale(.92)}
 .btn-op{background:var(--surface);border:1.5px solid var(--border);color:var(--ink);font-size:22px;font-weight:700;padding:7px 0;box-shadow:var(--shadow)}
-.btn-op:active{background:var(--gold-bg);border-color:var(--gold-br)}
-.btn-paren{background:var(--bg2);border:1.5px solid var(--border);color:var(--ink2);font-size:19px;font-weight:600;padding:5px 0}
-.btn-bksp{background:var(--bg2);border:1.5px solid var(--border);color:var(--ink2);font-size:19px;font-weight:600;padding:5px 0}
-.btn-clr{background:var(--bg2);border:1.5px solid var(--border);color:var(--ink3);font-size:11px;font-weight:700;letter-spacing:1px;padding:5px 0}
+.btn-op:active,.btn-paren:active,.btn-bksp:active,.btn-clr:active{background:var(--gold-bg);border-color:var(--gold-br)}
+.btn-paren{background:var(--surface);border:1.5px solid var(--border);color:var(--ink);font-size:20px;font-weight:600;padding:7px 0;box-shadow:var(--shadow)}
+.btn-bksp{background:var(--surface);border:1.5px solid var(--border);color:var(--ink);font-size:24px;font-weight:600;padding:7px 0;box-shadow:var(--shadow)}
+.btn-clr{background:var(--surface);border:1.5px solid var(--border);color:var(--ink2);font-size:11px;font-weight:700;letter-spacing:1px;padding:7px 0;box-shadow:var(--shadow)}
 .btn-solve{background:var(--gold);color:#fff;font-size:13px;letter-spacing:1.5px;padding:9px 0;border-radius:var(--r);box-shadow:var(--shadow-md);font-weight:600;width:100%}
 .btn-solve:active{opacity:.9}
 .btn-giveup{background:transparent;border:none;color:var(--ink3);font-size:11px;letter-spacing:.5px;padding:3px 20px;border-radius:var(--r);text-decoration:underline;text-underline-offset:2px}
@@ -497,7 +498,7 @@ function HowToPlay({ onClose, onPlay }) {
         </div>
         <div className="modal-body">
           <p className="modal-intro">
-            Four cards are revealed one by one. Use all four numbers and arithmetic to make <strong>24</strong>. You have <strong>2 minutes</strong> — find as many solutions as you can.
+            Four cards are revealed one by one. Use all four numbers and arithmetic to make <strong>24</strong>. You have <strong>90 seconds</strong> — find as many solutions as you can.
           </p>
           <div className="how-steps">
             <div className="how-step">
@@ -586,7 +587,7 @@ export default function App() {
   const [usedIdx, setUsedIdx] = useState(new Set());
   const [solutions, setSols]  = useState([]);
   const [firstTime, setFirst] = useState(null);
-  const [timeLeft, setTime]   = useState(60);
+  const [timeLeft, setTime]   = useState(90);
   const [feedback, setFB]     = useState({msg:"",ok:false});
   const [copied, setCopied]   = useState(false);
   const [pct, setPct]         = useState({speedPct:null,solutionsPct:null,totalPlayers:null,loading:false});
@@ -632,7 +633,7 @@ export default function App() {
     setCards(drawn); setAllSols(sols); setAllCanons(canons);
     setFlipped([false,false,false,false]);
     setTokens([]); setUsedIdx(new Set()); setSols([]); setFirst(null);
-    setTime(120); setFB({msg:"",ok:false}); setCopied(false); setGaveUp(false);
+    setTime(90); setFB({msg:"",ok:false}); setCopied(false); setGaveUp(false);
     setPct({speedPct:null,solutionsPct:null,totalPlayers:null,loading:false});
     solsRef.current=[]; firstRef.current=null; foundCanonsRef.current=new Set();
     setShowHow(false);
@@ -720,7 +721,7 @@ export default function App() {
 
   // ── IDLE ──────────────────────────────────────────────────────
   if(phase==="idle") return (
-    <><style>{CSS}</style>
+    <><Head><title>24 Daily</title></Head><style>{CSS}</style>
     <div className="wrap">
       <div className="idle">
         <div className="idle-suit-row">{["♠","♥","♦","♣"].map(s=><div className="idle-suit" key={s}>{s}</div>)}</div>
@@ -745,7 +746,7 @@ export default function App() {
     const foundCanons = new Set(solutions.map(s=>s.canon));
 
     return (
-      <><style>{CSS}</style>
+      <><Head><title>24 Daily</title></Head><style>{CSS}</style>
       <div className="wrap">
         <div className="results">
           <div className="res-hero">
@@ -833,7 +834,7 @@ export default function App() {
 
   // ── GAME ──────────────────────────────────────────────────────
   return (
-    <><style>{CSS}</style>
+    <><Head><title>24 Daily</title></Head><style>{CSS}</style>
     <div className="wrap">
       {showHow && <HowToPlay onClose={()=>setShowHow(false)}/>}
       <div className="hdr">
