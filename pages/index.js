@@ -427,7 +427,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--ink);over
 .btn-op{background:var(--surface);border:1.5px solid var(--border);color:var(--ink);font-size:22px;font-weight:700;padding:7px 0;box-shadow:var(--shadow)}
 .btn-op:active,.btn-paren:active,.btn-bksp:active,.btn-clr:active{background:var(--gold-bg);border-color:var(--gold-br)}
 .btn-paren{background:var(--surface);border:1.5px solid var(--border);color:var(--ink);font-size:20px;font-weight:600;padding:7px 0;box-shadow:var(--shadow)}
-.btn-bksp{background:var(--surface);border:1.5px solid var(--border);color:var(--ink);font-size:24px;font-weight:600;padding:7px 0;box-shadow:var(--shadow)}
+.btn-bksp{background:var(--surface);border:1.5px solid var(--border);color:var(--ink);font-size:13px;font-weight:700;letter-spacing:.5px;padding:7px 0;box-shadow:var(--shadow)}
 .btn-clr{background:var(--surface);border:1.5px solid var(--border);color:var(--ink2);font-size:11px;font-weight:700;letter-spacing:1px;padding:7px 0;box-shadow:var(--shadow)}
 .btn-solve{background:var(--gold);color:#fff;font-size:13px;letter-spacing:1.5px;padding:9px 0;border-radius:var(--r);box-shadow:var(--shadow-md);font-weight:600;width:100%}
 .btn-solve:active{opacity:.9}
@@ -899,7 +899,7 @@ export default function App() {
         <div className="btn-row br4">
           <button className="btn btn-paren" onClick={()=>addParen("(")}>(</button>
           <button className="btn btn-paren" onClick={()=>addParen(")")}>)</button>
-          <button className="btn btn-bksp" onClick={bksp}>⌫</button>
+          <button className="btn btn-bksp" onClick={bksp}>DEL</button>
           <button className="btn btn-clr" onClick={clr}>CLR</button>
         </div>
         <div className="solve-row">
