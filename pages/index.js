@@ -408,7 +408,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--ink);over
 @keyframes popIn{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
 
 /* EXPRESSION */
-.expr-wrap{padding:2px 10px 0px;flex-shrink:0}
+.expr-wrap{padding:2px 10px 2px;flex-shrink:0}
 .expr-box{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:5px 10px;min-height:38px;display:flex;align-items:center;flex-wrap:wrap;gap:3px;box-shadow:var(--shadow)}
 .expr-ph{font-family:'DM Mono',monospace;font-size:13px;color:var(--ink3)}
 .tok{font-family:'DM Mono',monospace;font-size:18px;font-weight:500}
@@ -419,8 +419,8 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--ink);over
 .feedback.ok{color:var(--green)}.feedback.err{color:var(--danger)}
 
 /* CONTROLS */
-.ctrl{padding:1px 10px 4px;flex-shrink:0}
-.btn-row{display:grid;gap:5px;margin-bottom:5px}
+.ctrl{padding:6px 10px 6px;flex-shrink:0}
+.btn-row{display:grid;gap:5px;margin-bottom:5px;margin-top:0}
 .br4{grid-template-columns:repeat(4,1fr)}
 .btn{border:none;border-radius:8px;cursor:pointer;font-family:'DM Mono',monospace;font-weight:500;transition:all .1s;display:flex;align-items:center;justify-content:center;touch-action:manipulation}
 .btn:active{transform:scale(.92)}
@@ -428,7 +428,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--ink);over
 .btn-op:active,.btn-paren:active,.btn-bksp:active,.btn-clr:active{background:var(--gold-bg);border-color:var(--gold-br)}
 .btn-paren{background:var(--surface);border:1.5px solid var(--border);color:var(--ink);font-size:20px;font-weight:600;padding:7px 0;box-shadow:var(--shadow)}
 .btn-bksp{background:var(--surface);border:1.5px solid var(--border);color:var(--ink);font-size:13px;font-weight:700;letter-spacing:.5px;padding:7px 0;box-shadow:var(--shadow)}
-.btn-clr{background:var(--surface);border:1.5px solid var(--border);color:var(--ink2);font-size:11px;font-weight:700;letter-spacing:1px;padding:7px 0;box-shadow:var(--shadow)}
+.btn-clr{background:var(--surface);border:1.5px solid var(--border);color:var(--ink2);font-size:13px;font-weight:700;letter-spacing:.5px;padding:7px 0;box-shadow:var(--shadow)}
 .btn-solve{background:var(--gold);color:#fff;font-size:13px;letter-spacing:1.5px;padding:9px 0;border-radius:var(--r);box-shadow:var(--shadow-md);font-weight:600;width:100%}
 .btn-solve:active{opacity:.9}
 .btn-giveup{background:transparent;border:none;color:var(--ink3);font-size:11px;letter-spacing:.5px;padding:3px 20px;border-radius:var(--r);text-decoration:underline;text-underline-offset:2px}
